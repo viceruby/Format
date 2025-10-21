@@ -188,6 +188,31 @@ public class Format {
         System.out.print(BOLD + "BRIGHT WHITE     " + RESET); System.out.print(Format.BRIGHT_WHITE + "FFFFFF   " + RESET); System.out.print(BACKGROUND_BRIGHT_WHITE + " "); System.out.print(BOLD_BRIGHT_WHITE); System.out.print(BOLD + "       WHITE     " + RESET); System.out.print(Format.WHITE + "808080   " + RESET); System.out.print(BACKGROUND_WHITE + " "); System.out.println(BOLD_WHITE);
         System.out.print(BOLD + "BRIGHT BLACK     " + RESET); System.out.print(Format.BRIGHT_BLACK + "595959   " + RESET); System.out.print(BACKGROUND_BRIGHT_BLACK + " "); System.out.print(BOLD_BRIGHT_BLACK); System.out.print(BOLD + "       BLACK     " + RESET); System.out.print(Format.BLACK + "000000   " + RESET); System.out.print(BACKGROUND_BLACK + " "); System.out.println(BOLD_BLACK);
 
+        System.out.println("\n" + "256-Color Palette Test:");
+
+        // Print the first 16 standard colors
+        for (int i = 0; i < 16; i++) {
+            System.out.printf("\u001b[48;5;%dm  ", i);
+        }
+        System.out.println(RESET);
+
+        // Print the 6x6x6 color cube (16-231)
+        for (int i = 16; i < 232; i++) {
+            System.out.printf("\u001b[48;5;%dm  ", i);
+            if ((i - 15) % 36 == 0) { // New line for each red step in the cube
+                System.out.println(RESET);
+            }
+        }
+        System.out.println(RESET);
+
+        // Print the 24 shades of gray (232-255)
+        for (int i = 232; i < 256; i++) {
+            System.out.printf("\u001b[48;5;%dm  ", i);
+        }
+        System.out.println(RESET);
+        System.out.println("\nText with colored foreground and background:");
+        System.out.println("\u001b[38;5;196m\u001b[48;5;236m" + "This is colored ASCII art!" + RESET);
+
     }
 
 }
